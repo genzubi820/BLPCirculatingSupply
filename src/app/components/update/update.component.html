@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center align-items-center vh-100 container">
+    <nav>
+        <button mat-raised-button routerLink="/home" color="primary" title="Home">Home</button> |
+        <button mat-raised-button color="accent" title="Recalculate BLP circulating supply" (click)="recalculate()">Recalculate!</button>
+    </nav>
+</div>
+<ngx-spinner type="ball-clip-rotate-pulse" size="medium">
+    <p style="font-size: 20px; color: white">Calculating...</p>
+</ngx-spinner>

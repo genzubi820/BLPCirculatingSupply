@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center align-items-center vh-100 container flex-column">
+    <nav>
+        <button mat-raised-button routerLink="/home" color="primary" title="Home">Home</button> |
+        <button mat-raised-button color="accent" (click)="getTokenInfo()">Fetch Data</button>
+    </nav>
+    <table mat-table [dataSource]="tableData" class="mat-elevation-z8 mt-3">
+        <ng-container matColumnDef="tokenId">
+            <th mat-header-cell *matHeaderCellDef> No.</th>
+            <td mat-cell *matCellDef="let element"> {{element.tokenId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalSupply">
+            <th mat-header-cell *matHeaderCellDef> Total Supply</th>
+            <td mat-cell *matCellDef="let element"> {{element.totalSupply}}
+                &#9;<button mat-raised-button
+                   [title]="'convert to another unit'"
+                   color="accent"
+                   (click)="convertValue('totalSupply')">
+                   {{convertOptions[activeConvertOption['totalSupply']['activeIndex']]}}
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="circulatingSupply">
+            <th mat-header-cell *matHeaderCellDef> Circulating Supply</th>
+            <td mat-cell *matCellDef="let element"> {{element.circulatingSupply}}
+                &#9;<button mat-raised-button
+                   [title]="'convert to another unit'"
+                   color="accent"
+                   (click)="convertValue('circulatingSupply')">
+                   {{convertOptions[activeConvertOption['circulatingSupply']['activeIndex']]}}
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
